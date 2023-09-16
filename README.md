@@ -4,11 +4,11 @@ It is a simple and minimalist CSS theme using the power of [light mode CSS media
 
 ## Dark Mode
 
-![dark mode](dark.png)
+![dark mode](dark.jpeg)
 
 ## Light Mode
 
-![light mode](light.png)
+![light mode](light.jpeg)
 
 
 [darklightmode]: https://css-tricks.com/dark-modes-with-css/
