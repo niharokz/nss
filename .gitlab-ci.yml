@@ -1,0 +1,26 @@
+stages:
+  - build
+
+minify_css:
+  stage: build
+  image: node:20
+  rules:
+    - changes:
+        - nss.css
+  script:
+    # Install minifier
+    - npm install -g clean-css-cli
+    # Minify nss.css → nss.min.css
+    - cleancss -o nss.min.css nss.css
+    # Configure Git
+    - git config user.name "GitLab CI"
+    - git config user.email "ci-bot@example.com"
+    # Commit only if file changed
+    - |
+      if ! git diff --quiet nss.min.css; then
+        git add nss.min.css
+        git commit -m "Auto-minified nss.css → nss.min.css [skip ci]"
+        git push origin HEAD:$CI_COMMIT_REF_NAME
+      else
+        echo "No changes to commit"
+      fi
