@@ -1,20 +1,21 @@
 /*!
- * NSS CSS Framework v2.0 (Production Ready)
+ * NSS CSS Framework v2.0 - Integrated Edition
  * Modern, Vibrant, Compact Design
- * Pure semantic HTML styling - No classes, No JavaScript required
+ * Pure semantic HTML styling - No classes required, No JavaScript needed
  * 
  * Features:
  * ✅ Vibrant color system with 6 accent colors
  * ✅ AMOLED black dark mode support
  * ✅ Compact, eye-catching design
  * ✅ Inline project and note displays
- * ✅ Gradient effects and animations
- * ✅ Responsive design with smooth transitions
- * ✅ System theme detection
+ * ✅ Gradient effects and smooth animations
+ * ✅ Fully responsive design
+ * ✅ Automatic system theme detection
  * ✅ Accessibility optimized
+ * ✅ Print-friendly styles
  * 
  * Usage: Simply link this CSS file to any semantic HTML page
- * <link rel="stylesheet" href="NSS.css">
+ * <link rel="stylesheet" href="NSS-integrated.css">
  */
 
 /* ========================================
@@ -126,7 +127,7 @@
 
 /* ========================================
    RESET & BASE STYLES
-   Modern CSS reset
+   Modern CSS reset with smooth rendering
    ======================================== */
 
 *,
@@ -147,7 +148,7 @@ html {
 
 body {
     font-family: var(--font-sans);
-    font-size: clamp(1rem, 1.8vw, 1.125rem);
+    font-size: 0.9375rem;
     line-height: 1.65;
     color: var(--txt);
     background: var(--bg);
@@ -158,7 +159,7 @@ body {
 
 /* ========================================
    TYPOGRAPHY SYSTEM
-   Clean, modern typography
+   Clean, modern typography with proper hierarchy
    ======================================== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -239,13 +240,14 @@ hr {
 
 /* ========================================
    LINK SYSTEM
-   Vibrant, clean link styling
+   Vibrant, accessible link styling
    ======================================== */
 
 a {
     color: var(--accent-blue);
     text-decoration: none;
-    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 500;
 }
 
@@ -259,17 +261,9 @@ a:focus-visible {
     border-radius: 3px;
 }
 
-/* External link indicator */
-a[href^="http"]:not([href*="localhost"]):not([href*="127.0.0.1"])::before {
-/*    content: '↗';  */
-    font-size: 0.7em;
-    margin-right: 0.2em;
-    opacity: 0.7;
-}
-
 /* ========================================
    HEADER & NAVIGATION
-   Compact single-line header
+   Compact single-line header design
    ======================================== */
 
 header {
@@ -300,6 +294,7 @@ header h1 a:hover {
     opacity: 0.85;
 }
 
+header nav,
 nav {
     display: flex;
     gap: var(--space-xs);
@@ -308,6 +303,7 @@ nav {
     flex-wrap: wrap;
 }
 
+header nav a,
 nav a {
     color: var(--txt-secondary);
     padding: 0.4rem 0.75rem;
@@ -316,6 +312,7 @@ nav a {
     font-weight: 600;
 }
 
+header nav a:hover,
 nav a:hover {
     color: var(--accent-blue);
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
@@ -323,7 +320,7 @@ nav a:hover {
 
 /* ========================================
    ARTICLE & CONTENT
-   Enhanced article styling
+   Enhanced article styling with gradients
    ======================================== */
 
 article {
@@ -357,6 +354,7 @@ article > p:last-of-type {
 
 /* ========================================
    SECTIONS & LAYOUT
+   Flexible section styling
    ======================================== */
 
 section {
@@ -384,7 +382,7 @@ aside {
 
 /* ========================================
    LIST SYSTEM
-   Inline cards with vibrant colors
+   Inline cards with vibrant color coding
    ======================================== */
 
 ul, ol {
@@ -398,13 +396,12 @@ ul li, ol li {
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 0.75rem var(--space-lg);
-    transition:
-        transform 0.25s cubic-bezier(0.4,0,0.2,1),
-        border-color 0.25s cubic-bezier(0.4,0,0.2,1),
-        box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    will-change: transform, box-shadow, border-color;
+    will-change: transform;
 }
 
 ul li::before {
@@ -455,6 +452,10 @@ ol {
     counter-reset: list-counter;
 }
 
+ol li {
+    padding-left: var(--space-2xl);
+}
+
 ol li::before {
     counter-increment: list-counter;
     content: counter(list-counter) '.';
@@ -466,6 +467,10 @@ ol li::before {
     font-weight: bold;
     width: auto;
     opacity: 1;
+}
+
+ol li:hover::before {
+    color: var(--accent-purple);
 }
 
 /* Notes section - INLINE WITH TIME */
@@ -508,31 +513,23 @@ section:has(time) a:hover {
     color: var(--accent-blue);
 }
 
-/* Color-coded notes */
-section:has(time) ul li:nth-child(1) { border-left: 3px solid var(--accent-cyan); }
-section:has(time) ul li:nth-child(2) { border-left: 3px solid var(--accent-green); }
-section:has(time) ul li:nth-child(3) { border-left: 3px solid var(--accent-blue); }
-section:has(time) ul li:nth-child(4) { border-left: 3px solid var(--accent-purple); }
-section:has(time) ul li:nth-child(5) { border-left: 3px solid var(--accent-pink); }
-section:has(time) ul li:nth-child(6) { border-left: 3px solid var(--accent-orange); }
-section:has(time) ul li:nth-child(7) { border-left: 3px solid var(--accent-cyan); }
-section:has(time) ul li:nth-child(8) { border-left: 3px solid var(--accent-green); }
-section:has(time) ul li:nth-child(9) { border-left: 3px solid var(--accent-blue); }
-section:has(time) ul li:nth-child(10) { border-left: 3px solid var(--accent-purple); }
-section:has(time) ul li:nth-child(11) { border-left: 3px solid var(--accent-pink); }
-section:has(time) ul li:nth-child(12) { border-left: 3px solid var(--accent-orange); }
+/* Color-coded notes (cycling through all accent colors) */
+section:has(time) ul li:nth-child(6n+1) { border-left: 3px solid var(--accent-cyan); }
+section:has(time) ul li:nth-child(6n+2) { border-left: 3px solid var(--accent-green); }
+section:has(time) ul li:nth-child(6n+3) { border-left: 3px solid var(--accent-blue); }
+section:has(time) ul li:nth-child(6n+4) { border-left: 3px solid var(--accent-purple); }
+section:has(time) ul li:nth-child(6n+5) { border-left: 3px solid var(--accent-pink); }
+section:has(time) ul li:nth-child(6n+6) { border-left: 3px solid var(--accent-orange); }
 
 /* Projects section - INLINE DISPLAY */
 section:not(:has(time)):not(:last-of-type) ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.625rem;
+    display: block;
 }
 
 section:not(:has(time)):not(:last-of-type) ul li {
-    display: block;
-    width: 100%;
-    margin-right: 0;
+    display: inline-block;
+    width: auto;
+    margin-right: var(--space-sm);
     margin-bottom: var(--space-sm);
     padding: 0.625rem var(--space-lg);
 }
@@ -550,13 +547,13 @@ section:not(:has(time)):not(:last-of-type) ul li:hover a {
     color: var(--accent-blue);
 }
 
-/* Color-coded projects */
-section:not(:has(time)):not(:last-of-type) ul li:nth-child(1) { border-left: 3px solid var(--accent-blue); }
-section:not(:has(time)):not(:last-of-type) ul li:nth-child(2) { border-left: 3px solid var(--accent-purple); }
-section:not(:has(time)):not(:last-of-type) ul li:nth-child(3) { border-left: 3px solid var(--accent-pink); }
-section:not(:has(time)):not(:last-of-type) ul li:nth-child(4) { border-left: 3px solid var(--accent-orange); }
-section:not(:has(time)):not(:last-of-type) ul li:nth-child(5) { border-left: 3px solid var(--accent-green); }
-section:not(:has(time)):not(:last-of-type) ul li:nth-child(6) { border-left: 3px solid var(--accent-cyan); }
+/* Color-coded projects (cycling through all accent colors) */
+section:not(:has(time)):not(:last-of-type) ul li:nth-child(6n+1) { border-left: 3px solid var(--accent-blue); }
+section:not(:has(time)):not(:last-of-type) ul li:nth-child(6n+2) { border-left: 3px solid var(--accent-purple); }
+section:not(:has(time)):not(:last-of-type) ul li:nth-child(6n+3) { border-left: 3px solid var(--accent-pink); }
+section:not(:has(time)):not(:last-of-type) ul li:nth-child(6n+4) { border-left: 3px solid var(--accent-orange); }
+section:not(:has(time)):not(:last-of-type) ul li:nth-child(6n+5) { border-left: 3px solid var(--accent-green); }
+section:not(:has(time)):not(:last-of-type) ul li:nth-child(6n+6) { border-left: 3px solid var(--accent-cyan); }
 
 /* Description lists */
 dt {
@@ -572,7 +569,7 @@ dd {
 
 /* ========================================
    CODE & PREFORMATTED TEXT
-   Vibrant code blocks
+   Vibrant code blocks with hover effects
    ======================================== */
 
 code {
@@ -617,13 +614,14 @@ kbd {
 
 /* ========================================
    FORM SYSTEM
-   Modern form styling
+   Modern, accessible form styling
    ======================================== */
 
 form {
     margin: var(--space-lg) 0;
 }
 
+form[action*="bing.com"],
 form[method] {
     display: flex;
     gap: 0.625rem;
@@ -708,7 +706,7 @@ legend {
 
 /* ========================================
    TABLES
-   Clean table design
+   Clean, modern table design
    ======================================== */
 
 table {
@@ -746,6 +744,7 @@ tr:last-child td {
 
 /* ========================================
    MEDIA ELEMENTS
+   Responsive media with proper styling
    ======================================== */
 
 img, video, audio {
@@ -769,6 +768,7 @@ figcaption {
 
 /* ========================================
    INTERACTIVE ELEMENTS
+   Details, progress, and other elements
    ======================================== */
 
 details {
@@ -807,9 +807,14 @@ progress::-webkit-progress-value {
     border-radius: 8px;
 }
 
+progress::-moz-progress-bar {
+    background: var(--gradient-1);
+    border-radius: 8px;
+}
+
 /* ========================================
    FOOTER
-   Compact footer matching header
+   Compact footer matching header style
    ======================================== */
 
 footer {
@@ -847,7 +852,7 @@ footer span {
     color: var(--txt-tertiary);
 }
 
-/* Membership section styling */
+/* Membership/Last section styling */
 section:last-of-type {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
     border: 1px solid var(--border);
@@ -873,73 +878,110 @@ section:last-of-type a {
 
 /* ========================================
    RESPONSIVE DESIGN
-   Mobile-first breakpoints
+   Mobile-first, fluid responsive breakpoints
    ======================================== */
 
 @media (max-width: 768px) {
     body {
         padding: 1.75rem 1.25rem;
-        font-size: clamp(1.0625rem, 2.8vw, 1.25rem);
+        font-size: clamp(0.9375rem, 2.5vw, 1.125rem);
     }
+
     h2 {
         font-size: 1.1875rem;
         margin: 1.75rem 0 0.875rem;
     }
+
+    p {
+        font-size: 1rem;
+    }
+
     header {
         flex-wrap: wrap;
     }
+
     header h1 {
         font-size: 1.625rem;
+    }
+
+    /* Grid layout for link sections on tablet */
+    section:not(:has(time)):not(:last-of-type) ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+        gap: 0.625rem;
+    }
+
+    section:not(:has(time)):not(:last-of-type) ul li {
+        width: 100%;
+        display: block;
+        margin: 0;
     }
 }
 
 @media (max-width: 640px) {
     body {
         padding: var(--space-xl) var(--space-lg);
-        font-size: clamp(1.1rem, 3.2vw, 1.25rem);
+        font-size: clamp(0.9375rem, 3vw, 1.0625rem);
     }
+
     h1 {
         font-size: 1.375rem;
     }
+
     h2 {
         font-size: 1.125rem;
         margin: var(--space-xl) 0 var(--space-md);
         padding-left: 0.625rem;
     }
+
     h3 {
         font-size: 1.0625rem;
     }
+
+    p {
+        font-size: 0.9375rem;
+    }
+
     header {
         margin-bottom: 1.75rem;
         padding-bottom: 0.875rem;
         gap: var(--space-lg);
     }
+
     header h1 {
         font-size: 1.5rem;
         width: 100%;
     }
+
     header nav {
         width: 100%;
-        font-size: 0.75rem;
+        font-size: 0.8125rem;
         gap: var(--space-xs);
         justify-content: flex-start;
     }
-    nav a {
-        padding: 0.375rem 0.625rem;
+
+    header nav a {
+        padding: 0.4rem 0.7rem;
     }
+
     article > h1:first-child {
         font-size: 1.875rem;
     }
+
     article > p:first-of-type,
     article > h1 + p {
         font-size: 1rem;
     }
+
     ul {
         gap: var(--space-sm);
     }
+
     ul li {
         padding: 0.625rem 0.875rem;
+        font-size: 0.9375rem;
     }
+
     section:has(time) ul li {
         display: flex;
         width: 100%;
@@ -947,38 +989,69 @@ section:last-of-type a {
         margin-bottom: var(--space-sm);
         gap: var(--space-sm);
     }
+
     section:has(time) time {
-        font-size: 0.6875rem;
+        font-size: 0.75rem;
         padding: 0.1875rem 0.375rem;
     }
+
     section:has(time) a {
         white-space: normal;
+        font-size: 0.9375rem;
     }
+
+    /* Grid layout for link sections */
+    section:not(:has(time)):not(:last-of-type) ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+        gap: 0.5rem;
+    }
+
+    section:not(:has(time)):not(:last-of-type) ul li {
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+
     footer {
         margin-top: var(--space-3xl);
         padding-top: 1.25rem;
-        font-size: 0.8125rem;
+        font-size: 0.875rem;
     }
+
     footer p {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
         gap: var(--space-md);
     }
+
     footer nav {
+        display: flex;
         gap: 0.625rem;
-        width: 100%;
+        flex-wrap: wrap;
     }
+
     footer a {
-        font-size: 0.75rem;
+        font-size: 0.8125rem;
     }
+
     footer span {
+        font-size: 0.8125rem;
         width: 100%;
-        font-size: 0.75rem;
     }
+
     section:last-of-type {
         padding: var(--space-lg);
     }
+
+    form[action*="bing.com"],
     form[method] {
         flex-direction: column;
     }
+
+    form[action*="bing.com"] input[type="text"],
     form[method] input[type="text"] {
         min-width: unset;
     }
@@ -987,42 +1060,105 @@ section:last-of-type a {
 @media (max-width: 480px) {
     body {
         padding: 1.25rem 0.875rem;
-        font-size: clamp(1.125rem, 4vw, 1.35rem);
+        font-size: clamp(0.875rem, 3.5vw, 1rem);
     }
+
     h1 {
         font-size: 1.25rem;
     }
+
     h2 {
         font-size: 1.0625rem;
         margin: 1.25rem 0 0.625rem;
     }
+
+    p {
+        font-size: 0.875rem;
+    }
+
     header {
         margin-bottom: var(--space-xl);
     }
+
     header h1 {
         font-size: 1.375rem;
     }
+
+    header nav {
+        font-size: 0.75rem;
+    }
+
+    header nav a {
+        padding: 0.35rem 0.6rem;
+    }
+
     article > h1:first-child {
         font-size: 1.75rem;
     }
+
     ul li {
         padding: var(--space-sm) var(--space-md);
+        font-size: 0.875rem;
     }
+
     section:has(time) ul li {
-        gap: 0.4375rem;
         padding: var(--space-sm) var(--space-md);
+        gap: 0.4375rem;
     }
+
     section:has(time) time {
-        font-size: 0.625rem;
+        font-size: 0.6875rem;
         padding: 0.1875rem 0.3125rem;
     }
+
+    section:has(time) a {
+        font-size: 0.875rem;
+    }
+
+    /* Grid layout for link sections */
+    section:not(:has(time)):not(:last-of-type) ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+        gap: 0.5rem;
+    }
+
+    section:not(:has(time)):not(:last-of-type) ul li {
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+
     footer {
         margin-top: var(--space-2xl);
+        font-size: 0.8125rem;
+    }
+
+    footer p {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    footer nav {
+        display: flex;
+        gap: var(--space-sm);
+        flex-wrap: wrap;
+    }
+
+    footer a {
         font-size: 0.75rem;
     }
+
+    footer span {
+        font-size: 0.75rem;
+    }
+
     section:last-of-type {
         padding: 0.875rem;
     }
+
     pre {
         padding: var(--space-lg);
         font-size: 0.8125rem;
@@ -1031,6 +1167,7 @@ section:last-of-type a {
 
 /* ========================================
    ACCESSIBILITY
+   Respect user preferences and ensure usability
    ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1041,6 +1178,7 @@ section:last-of-type a {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+
     html {
         scroll-behavior: auto;
     }
@@ -1051,14 +1189,35 @@ section:last-of-type a {
     color: white;
 }
 
+::-moz-selection {
+    background: var(--accent-blue);
+    color: white;
+}
+
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
     outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
 }
 
+/* Screen reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* ========================================
    PRINT STYLES
+   Optimized for printing
    ======================================== */
 
 @media print {
@@ -1068,20 +1227,40 @@ input:focus-visible {
         background: white;
         color: black;
     }
+
     a {
         color: black;
+        text-decoration: underline;
     }
+
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+    }
+
     header nav,
     footer nav {
         display: none;
     }
-    ul li {
+
+    ul li,
+    section {
         break-inside: avoid;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    img {
+        max-width: 100%;
+        page-break-inside: avoid;
     }
 }
 
 /* ========================================
    UTILITY CLASSES (Optional)
+   Use sparingly - prefer semantic HTML
    ======================================== */
 
 .text-center { text-align: center; }
@@ -1096,20 +1275,8 @@ input:focus-visible {
 .inline { display: inline; }
 .flex { display: flex; }
 
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 /* Framework identifier */
 html::before {
-    content: 'NSS CSS v2.0 - Modern Vibrant Design';
+    content: 'NSS CSS v2.0 - Integrated Edition';
     display: none;
 }
