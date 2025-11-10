@@ -1,0 +1,160 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║              NSS CSS FRAMEWORK v2.0                          ║
+║              Quick Start Guide                               ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+📦 FILES INCLUDED
+─────────────────────────────────────────────────────────────
+1. nss.css (24.2 KB)            - Development version
+2. nss.min.css (15.9 KB)        - Production version (recommended)
+3. README.md                    - Full documentation
+4. QuickStart.txt               - This file
+
+
+🚀 INSTALLATION
+─────────────────────────────────────────────────────────────
+Add ONE line to your HTML <head>:
+
+    <link rel="stylesheet" href="nss.min.css">
+
+That's it! No JavaScript, no build tools, no configuration.
+
+
+✨ KEY FEATURES
+─────────────────────────────────────────────────────────────
+✓ 6 vibrant accent colors (auto-rotating)
+✓ AMOLED pure black dark mode
+✓ Inline project tags with unique colors
+✓ Inline notes with time + description
+✓ Single-line compact header
+✓ Footer matching header style
+✓ Fully responsive (mobile-first)
+✓ Zero classes needed
+✓ Works with semantic HTML only
+
+
+🎨 WHAT YOU GET
+─────────────────────────────────────────────────────────────
+→ Projects display as colorful inline tags
+→ Notes show time + title on same line
+→ Each item gets unique color (blue→purple→pink→orange→green→cyan)
+→ Header stays single-line on desktop
+→ Footer stays horizontal on mobile
+→ Smooth transitions everywhere
+→ Professional, modern look
+
+
+🌓 DARK MODE
+─────────────────────────────────────────────────────────────
+Automatic based on system preference!
+
+Pure black (#000) background for OLED screens.
+
+Optional manual override:
+    <html data-theme="dark">    <!-- Force dark -->
+    <html data-theme="light">   <!-- Force light -->
+
+
+📱 RESPONSIVE BREAKPOINTS
+─────────────────────────────────────────────────────────────
+768px  - Tablet
+640px  - Mobile
+480px  - Small mobile
+
+All transitions are smooth and natural.
+
+
+📐 HTML STRUCTURE (Example)
+─────────────────────────────────────────────────────────────
+<header>
+    <h1><a href="/">Your Name</a></h1>
+    <nav>
+        <a href="/">home</a>
+        <a href="/blog">blog</a>
+    </nav>
+</header>
+
+<section>
+    <h2>Projects</h2>
+    <ul>
+        <li><a href="#">Project 1</a></li>
+        <li><a href="#">Project 2</a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Notes</h2>
+    <ul>
+        <li><time>2024-01-15</time> -- <a href="#">Note Title</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>
+        <nav>
+            <a href="/">home</a>
+            <a href="/rss">rss</a>
+        </nav>
+        <span>Email: <a href="mailto:you@email.com">you@email.com</a></span>
+    </p>
+</footer>
+
+
+🎨 CUSTOMIZATION
+─────────────────────────────────────────────────────────────
+All colors are CSS variables. Override in your own stylesheet:
+
+:root {
+    --accent-blue: #your-color;
+    --accent-purple: #your-color;
+    /* etc */
+}
+
+
+⚡ PERFORMANCE
+─────────────────────────────────────────────────────────────
+Size: 15.9 KB minified (gzips to ~5 KB)
+Load time: <50ms on average connection
+No JavaScript: Pure CSS solution
+GPU accelerated: Smooth 60fps animations
+
+
+✅ BROWSER SUPPORT
+─────────────────────────────────────────────────────────────
+Chrome/Edge    ✓
+Firefox        ✓
+Safari         ✓
+Mobile         ✓
+IE11           ✗ (modern CSS only)
+
+
+💡 TIPS
+─────────────────────────────────────────────────────────────
+1. Use semantic HTML only - no classes needed
+2. Projects auto-become colorful inline tags
+3. Notes with <time> auto-layout inline
+4. System dark mode works automatically
+5. All hover effects are smooth and subtle
+
+
+📚 MORE INFO
+─────────────────────────────────────────────────────────────
+Read README.md for:
+- Complete element support
+- Customization guide
+- Advanced features
+- Accessibility info
+
+
+🎉 YOU'RE READY!
+─────────────────────────────────────────────────────────────
+Just link nss.min.css and your site will look amazing.
+
+No setup, no config, no hassle. It just works!
+
+
+───────────────────────────────────────────────────────────────
+NSS CSS Framework v2.0 | Modern, Vibrant, Zero-Config
+───────────────────────────────────────────────────────────────
