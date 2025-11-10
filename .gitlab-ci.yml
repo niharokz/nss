@@ -16,8 +16,8 @@ minify_css:
     - |
       if ! git diff --cached --quiet; then
         git commit -m "Auto-minified nss.css → nss.min.css [skip ci]"
-        # Use the CI_JOB_TOKEN for push authentication
-        git push https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/${CI_PROJECT_PATH}.git HEAD:$CI_COMMIT_REF_NAME
+        # Use your token securely for push
+        git push https://${GIT_PUSH_TOKEN}@gitlab.com/${CI_PROJECT_PATH}.git HEAD:$CI_COMMIT_REF_NAME
       else
         echo "No changes to commit"
       fi
