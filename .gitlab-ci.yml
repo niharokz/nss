@@ -8,19 +8,16 @@ minify_css:
     - changes:
         - nss.css
   script:
-    # Install minifier
     - npm install -g clean-css-cli
-    # Minify nss.css → nss.min.css
     - cleancss -o nss.min.css nss.css
-    # Configure Git
     - git config user.name "GitLab CI"
     - git config user.email "ci-bot@example.com"
-    # Commit only if file changed
+    - git add nss.min.css
     - |
-      if ! git diff --quiet nss.min.css; then
-        git add nss.min.css
+      if ! git diff --cached --quiet; then
         git commit -m "Auto-minified nss.css → nss.min.css [skip ci]"
-        git push origin HEAD:$CI_COMMIT_REF_NAME
+        # Use the CI_JOB_TOKEN for push authentication
+        git push https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/${CI_PROJECT_PATH}.git HEAD:$CI_COMMIT_REF_NAME
       else
         echo "No changes to commit"
       fi
