@@ -93,37 +93,44 @@
 }
 
 /* Optional Theme Override */
-[data-theme="light"] {
-    --bg: #fafbfc;
-    --surface: #ffffff;
-    --txt: #0f172a;
-    --txt-secondary: #475569;
-    --txt-tertiary: #94a3b8;
-    --accent-blue: #3b82f6;
-    --accent-purple: #8b5cf6;
-    --accent-pink: #ec4899;
-    --accent-orange: #f97316;
-    --accent-green: #10b981;
-    --accent-cyan: #06b6d4;
-    --border: #e2e8f0;
-    --border-hover: #cbd5e1;
+/* Force theme overrides with higher specificity */
+html[data-theme="light"],
+html[data-theme="light"] :root {
+    color-scheme: light;
+    --bg: #fafbfc !important;
+    --surface: #ffffff !important;
+    --txt: #0f172a !important;
+    --txt-secondary: #475569 !important;
+    --txt-tertiary: #94a3b8 !important;
+    --accent-blue: #3b82f6 !important;
+    --accent-purple: #8b5cf6 !important;
+    --accent-pink: #ec4899 !important;
+    --accent-orange: #f97316 !important;
+    --accent-green: #10b981 !important;
+    --accent-cyan: #06b6d4 !important;
+    --border: #e2e8f0 !important;
+    --border-hover: #cbd5e1 !important;
 }
 
-[data-theme="dark"] {
-    --bg: #000000;
-    --surface: #0a0a0a;
-    --txt: #f1f5f9;
-    --txt-secondary: #cbd5e1;
-    --txt-tertiary: #64748b;
-    --accent-blue: #60a5fa;
-    --accent-purple: #a78bfa;
-    --accent-pink: #f472b6;
-    --accent-orange: #fb923c;
-    --accent-green: #34d399;
-    --accent-cyan: #22d3ee;
-    --border: #1a1a1a;
-    --border-hover: #2a2a2a;
+html[data-theme="dark"],
+html[data-theme="dark"] :root {
+    color-scheme: dark;
+    --bg: #000000 !important;
+    --surface: #0a0a0a !important;
+    --txt: #f1f5f9 !important;
+    --txt-secondary: #cbd5e1 !important;
+    --txt-tertiary: #64748b !important;
+    --accent-blue: #60a5fa !important;
+    --accent-purple: #a78bfa !important;
+    --accent-pink: #f472b6 !important;
+    --accent-orange: #fb923c !important;
+    --accent-green: #34d399 !important;
+    --accent-cyan: #22d3ee !important;
+    --border: #1a1a1a !important;
+    --border-hover: #2a2a2a !important;
 }
+
+
 
 /* ========================================
    RESET & BASE STYLES
