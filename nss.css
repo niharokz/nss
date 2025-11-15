@@ -159,7 +159,7 @@ body {
     line-height: 1.65;
     color: var(--txt);
     background: var(--bg);
-    max-width: 760px;
+    max-width: 860px;
     margin: 0 auto;
     padding: var(--space-2xl) var(--space-xl);
 }
