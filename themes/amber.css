@@ -1,0 +1,3 @@
+/* nss theme: amber — warm orange accent. Load after nss.css. */
+:root{--nss-accent:#d9620b;--nss-ink:#ffb26b;--nss-accent-2:#ffd36b;--nss-grid:rgba(217,98,11,.08);--nss-glow:rgba(217,98,11,.2)}
+@media (prefers-color-scheme:light){:root{--nss-ink:#a84a06;--nss-accent-2:#8a5a00;--nss-grid:rgba(217,98,11,.09);--nss-glow:rgba(217,98,11,.1)}}

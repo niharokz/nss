@@ -1,0 +1,6 @@
+
+/* ── nih.ar site layer (on top of nss 3.0) ───────────────── */
+body>section:first-of-type>p:first-of-type::before{content:"$ whoami";display:block;margin-bottom:.9rem;font:500 .8rem/1 var(--nss-mono);color:var(--nss-accent-2)}
+header:not(:has(>h1>a))>nav>a:first-child{font-size:0}
+header:not(:has(>h1>a))>nav>a:first-child::before{content:"~/nih.ar";font-size:1.1rem;background:linear-gradient(90deg,var(--nss-ink) 0 2ch,var(--nss-fg) 2ch);-webkit-background-clip:text;background-clip:text;color:transparent}
+header:not(:has(>h1>a))>nav>a:first-child::after{font-size:1.1rem}

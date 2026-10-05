@@ -1,0 +1,16 @@
+/* ── preferences and print ─────────────────────────────── */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media (forced-colors:active){
+  :is(header>h1>a,header>nav>a:first-child)::before{forced-color-adjust:auto}
+  header>h1:not(:has(a)),body>section:first-of-type>p:first-of-type a{background:none;color:CanvasText}
+}
+@media print{
+  body{background:none;color:#000;font-size:11pt}
+  header>nav,body>footer,body>aside,dialog{display:none}
+  a{text-decoration:underline}
+  article a[href^="http"]::after{content:" (" attr(href) ")";font-size:.8em;color:#555}
+  pre{white-space:pre-wrap;background-image:none;padding-top:1rem}
+  :is(section,article) *{break-inside:avoid}
+}
+@keyframes nss-blink{50%{opacity:0}}
+@keyframes nss-slide{to{background-position:-300% 0}}

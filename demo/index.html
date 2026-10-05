@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nss 3.0 — classless CSS</title>
+<meta name="description" content="nss: a classless CSS framework. Plain HTML in, a finished site out. No classes, no JavaScript.">
+<link rel="stylesheet" href="../dist/nss.css">
+</head>
+<body>
+<header>
+<h1><a href="./">nss</a></h1>
+<nav>
+<a href="./">home</a>
+<a href="#elements">elements</a>
+<a href="#patterns">patterns</a>
+<a href="#forms">forms</a>
+<a href="https://gitlab.com/niharokz/nss">source</a>
+</nav>
+</header>
+
+<section>
+<p>Plain HTML in. A finished website out. <a href="#start">No classes.</a></p>
+<p>nss styles every HTML element and recognises common page structures — cards, timelines, tiles, galleries, stat rows, a sidebar — from the HTML alone. Nothing to learn but HTML.</p>
+
+<h2># features</h2>
+<ul>
+<li><a href="#elements">Every element</a>: typography, code, tables, media, forms, dialogs.</li>
+<li><a href="#patterns">Patterns</a>: write the structure, get the component.</li>
+<li><a href="#themes">Themes</a>: one file of variables; light and dark built in.</li>
+<li><a href="#start">Tiny</a>: about 7 KB gzipped, zero JavaScript.</li>
+</ul>
+
+<h2># changelog</h2>
+<ul>
+<li><time datetime="2026-10-05">2026-10-05</time> -- <a href="#start">nss 3.0: a full classless framework</a></li>
+<li><time datetime="2025-04-01">2025-04-01</time> -- <a href="#start">nss 2.0: vibrant redesign</a></li>
+<li><time datetime="2024-01-10">2024-01-10</time> -- <a href="#start">nss 1.1: first public version</a></li>
+</ul>
+</section>
+
+<article id="start">
+<h2>Get started</h2>
+<p>Add one line to your page's <code>&lt;head&gt;</code>:</p>
+<pre><code>&lt;link rel="stylesheet" href="https://niharokz.gitlab.io/nss/nss.min.css"&gt;</code></pre>
+<aside><strong>Tip</strong> An aside inside an article becomes a callout like this one.</aside>
+<p>Press <kbd>Ctrl</kbd> + <kbd>F5</kbd> to reload. Variables look like <var>--nss-accent</var>; sample output looks like <samp>build ok</samp>.</p>
+</article>
+
+<article id="elements">
+<h2>Typography</h2>
+<p>Text can be <strong>strong</strong>, <em>emphasised</em>, <mark>marked</mark>, <del>deleted</del>, <ins>inserted</ins>, <small>small</small>, <abbr title="HyperText Markup Language">HTML</abbr>, <q>quoted</q>, H<sub>2</sub>O or x<sup>2</sup>. Dates use <time>2026-10-05</time> and numbers <data value="42">42</data>.</p>
+<h3>A third-level heading <small>new</small></h3>
+<h4>Fourth level</h4>
+<h5>Fifth level</h5>
+<h6>Sixth level</h6>
+<blockquote><p>Simplicity is prerequisite for reliability.</p><footer>Edsger W. Dijkstra</footer></blockquote>
+<ol><li>Ordered lists</li><li>get mono numbers<ol><li>and nest</li></ol></li></ol>
+<ul><li>Unordered lists</li><li>use the accent for markers</li></ul>
+<dl><dt>Term</dt><dd>A description list pairs a term with its meaning.</dd><dt>Another</dt><dd>Lines up in two columns on wide screens.</dd></dl>
+<hr>
+<address>Nihar · Bengaluru · <a href="mailto:hi@nihars.com">hi@nihars.com</a></address>
+
+<h2>Code</h2>
+<pre><code>def hello(name):
+    return f"Hello, {name}!"</code></pre>
+<pre><samp>$ rynz build
+✓ built 26 pages in 0.11s</samp></pre>
+
+<h2>Tables</h2>
+<table>
+<caption>Containers on nimory</caption>
+<thead><tr><th>Service</th><th>Status</th><th>Uptime</th></tr></thead>
+<tbody>
+<tr><td>caddy</td><td>running</td><td><time>10h 14m</time></td></tr>
+<tr><td>immich</td><td>healthy</td><td><time>10h 14m</time></td></tr>
+<tr><td>ollama</td><td>idle</td><td><time>2h 03m</time></td></tr>
+</tbody>
+<tfoot><tr><td>3 services</td><td>all up</td><td></td></tr></tfoot>
+</table>
+
+<h2>Media</h2>
+<figure>
+<figure><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%233a807a'/%3E%3C/svg%3E" alt="Teal sample" width="400" height="300"><figcaption>One</figcaption></figure>
+<figure><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%23a9b8ff'/%3E%3C/svg%3E" alt="Blue sample" width="400" height="300"><figcaption>Two</figcaption></figure>
+<figure><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%2366bdb3'/%3E%3C/svg%3E" alt="Light teal sample" width="400" height="300"><figcaption>Three</figcaption></figure>
+<figcaption>A figure holding figures is a gallery.</figcaption>
+</figure>
+
+<h2>Disclosure</h2>
+<details open><summary>What is classless CSS?</summary><p>Styles attach to elements and their structure instead of class names.</p></details>
+<details><summary>Does it need JavaScript?</summary><p>No.</p></details>
+<details><summary>Can I theme it?</summary><p>Override the variables in <code>:root</code>.</p></details>
+
+<p># Last updated on <time>2026-10-05</time>.</p>
+</article>
+
+<section id="patterns">
+<h2>Cards: a section of articles</h2>
+<article><h3>Rynz</h3><p>Markdown in, plain HTML out.</p><footer>Python · MIT</footer></article>
+<article><h3>nimory</h3><p>One machine running files, photos, notes and local AI.</p><footer>Debian · Docker</footer></article>
+<article><h3>nss</h3><p>This stylesheet. Classless and JavaScript-free.</p><footer>CSS · MIT</footer></article>
+</section>
+
+<section>
+<h2>Stat tiles: a dl of divs</h2>
+<dl>
+<div><dt>Uptime</dt><dd><data value="99.9">99.9%</data></dd></div>
+<div><dt>Containers</dt><dd><data value="19">19</data></dd></div>
+<div><dt>Disk used</dt><dd><data value="17">17%</data></dd></div>
+<div><dt>Last backup</dt><dd><data value="18">18h ago</data></dd></div>
+</dl>
+<h2>Key–value rows</h2>
+<ul>
+<li><strong>memory</strong> 3.2 GB / 15.4 GB <progress value="20" max="100">20%</progress> 20%</li>
+<li><strong>disk</strong> <meter value="0.17" low="0.7" high="0.9" optimum="0.1">17%</meter> 17%</li>
+<li><strong>load</strong> 0.08 · 0.09 · 0.09</li>
+</ul>
+<h2>Tiles: a list of links</h2>
+<ul>
+<li><a href="#">📧 Mail</a></li>
+<li><a href="#">🦊 GitLab</a></li>
+<li><a href="#">🌐 Mastodon</a></li>
+<li><a href="#">📄 Resume</a></li>
+</ul>
+</section>
+
+<section id="forms">
+<h2>Forms</h2>
+<form>
+<label>Name <input type="text" name="name" placeholder="Ada Lovelace" required></label>
+<label>Email <input type="email" name="email" placeholder="ada@example.com"></label>
+<label>Topic
+<select name="topic"><option>Homelab</option><option>Banking</option><option>Linux</option></select>
+</label>
+<label>Message <textarea name="message" placeholder="Say hello"></textarea></label>
+<fieldset>
+<legend>Options</legend>
+<label><input type="checkbox" checked> Subscribe to the feed</label>
+<label><input type="radio" name="r" checked> Weekly</label>
+<label><input type="radio" name="r"> Monthly</label>
+<label><input type="checkbox" role="switch" checked> Dark mode follows the system</label>
+<label>Volume <input type="range" value="60"></label>
+</fieldset>
+<p><button>Send</button> <button type="reset">Clear</button> <button disabled>Disabled</button></p>
+</form>
+<search>
+<form><input type="search" name="q" placeholder="Search…"><input type="submit" value="Search"></form>
+</search>
+<p>Working… <progress></progress></p>
+</section>
+
+<section id="themes">
+<h2>Themes</h2>
+<p>Load a theme after nss, or override any variable yourself:</p>
+<pre><code>&lt;link rel="stylesheet" href="nss.min.css"&gt;
+&lt;link rel="stylesheet" href="nss-amber.min.css"&gt;
+
+&lt;style&gt;:root{ --nss-accent:#c2410c; --nss-radius:4px }&lt;/style&gt;</code></pre>
+</section>
+
+<section>
+<p># Built with <a href="https://gitlab.com/niharokz/nss">nss</a>, used by <a href="https://nih.ar">nih.ar</a> and <a href="https://home.nihars.com">home.nihars.com</a>.</p>
+</section>
+
+<footer>
+<nav>
+<a href="https://gitlab.com/niharokz/nss">source</a>
+<a href="https://gitlab.com/niharokz/nss/-/blob/main/CHANGELOG.md">changelog</a>
+<a href="mailto:hi@nihars.com">hi at nihars.com</a>
+</nav>
+</footer>
+</body>
+</html>

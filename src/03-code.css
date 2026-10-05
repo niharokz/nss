@@ -1,0 +1,15 @@
+/* ── code ──────────────────────────────────────────────── */
+code,kbd,samp,var{font:.87em/1.5 var(--nss-mono)}
+var{font-style:italic;color:var(--nss-ink)}
+:not(pre)>:is(code,samp){padding:.12em .4em;border-radius:6px;background:var(--nss-surface-2);border:1px solid var(--nss-line);color:var(--nss-ink);white-space:break-spaces}
+kbd{padding:.1em .45em;border-radius:6px;background:var(--nss-surface);border:1px solid var(--nss-line);border-bottom-width:3px;color:var(--nss-fg)}
+/* a code block looks like a terminal window */
+pre{
+  overflow-x:auto;margin-inline:calc(var(--nss-gutter)*-1);padding:2.3rem var(--nss-gutter) 1rem;font-size:.85rem;line-height:1.6;
+  border-block:1px solid var(--nss-line);background:var(--nss-surface) no-repeat;background-size:12px 12px;
+  background-image:radial-gradient(circle,var(--nss-bad) 4px,transparent 4.5px),radial-gradient(circle,var(--nss-accent) 4px,transparent 4.5px),radial-gradient(circle,var(--nss-accent-2) 4px,transparent 4.5px);
+  background-position:var(--nss-gutter) .8rem,calc(var(--nss-gutter) + 18px) .8rem,calc(var(--nss-gutter) + 36px) .8rem;
+}
+pre code{font-size:inherit;color:var(--nss-fg)}
+pre:has(>samp){background-image:none;padding-top:1rem}
+@media (min-width:40rem){pre{margin-inline:0;border:1px solid var(--nss-line);border-radius:var(--nss-radius)}}

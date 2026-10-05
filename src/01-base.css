@@ -1,0 +1,18 @@
+/* ── base ──────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:4.5rem;tab-size:2}
+body{
+  display:flex;flex-direction:column;margin:0;min-height:100vh;min-height:100dvh;color:var(--nss-fg);
+  font:var(--nss-size)/var(--nss-leading) var(--nss-sans);overflow-wrap:break-word;
+  background:radial-gradient(45rem 28rem at 105% -10%,var(--nss-glow),transparent 70%),
+    linear-gradient(var(--nss-grid) 1px,transparent 1px),linear-gradient(90deg,var(--nss-grid) 1px,transparent 1px) var(--nss-bg);
+  background-size:auto,var(--nss-grid-size) var(--nss-grid-size),var(--nss-grid-size) var(--nss-grid-size);
+  background-attachment:fixed;
+}
+/* every direct child of body is a centred column; main can hold its own sections */
+body>*{width:100%;max-width:var(--nss-width);margin-inline:auto;padding-inline:var(--nss-gutter)}
+main{flex:1 0 auto}
+main>*:first-child{margin-top:0}
+[hidden]{display:none!important}
+::selection{background:var(--nss-accent);color:var(--nss-on-accent)}
+:focus-visible{outline:2px solid var(--nss-accent);outline-offset:3px;border-radius:4px}

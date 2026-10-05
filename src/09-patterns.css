@@ -1,0 +1,105 @@
+/* ── patterns ──────────────────────────────────────────────
+   Plain HTML structures that nss recognises and draws as components.
+   Nothing to add: write the structure, get the component.            */
+
+/* hero: the first paragraph of the first section is the big intro line */
+body>section:first-of-type>p:first-of-type,body>main>section:first-child>p:first-child{margin:2.75rem 0 1rem;font-size:clamp(1.5rem,5.2vw + .6rem,2.75rem);font-weight:750;line-height:1.18;letter-spacing:-.035em;text-wrap:balance}
+:is(body>section:first-of-type>p:first-of-type,body>main>section:first-child>p:first-child) a{text-decoration:none;background:linear-gradient(100deg,var(--nss-ink),color-mix(in srgb,var(--nss-ink) 40%,#fff) 50%,var(--nss-accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+:is(body>section:first-of-type,body>main>section:first-child)>p~p{color:var(--nss-muted);font-size:1.02rem}
+:is(body>section:first-of-type,body>main>section:first-child)>p~p a{color:var(--nss-fg);font-weight:600}
+/* hero with a heading:  <hgroup><h1>…</h1><p>…</p></hgroup> */
+body>:is(hgroup,main>hgroup:first-child),body>section>hgroup:first-child{margin:3rem 0 2rem}
+:is(body,main,section)>hgroup>h1{font-size:clamp(2rem,7vw,3.2rem);letter-spacing:-.04em}
+
+/* section labels on the home section: small mono caps with a rule */
+:is(body>section:first-of-type,body>main>section:first-child)>h2{margin:3rem 0 1rem;padding-bottom:.6rem;border-bottom:1px solid var(--nss-line);font:700 .78rem/1 var(--nss-mono);text-transform:uppercase;letter-spacing:.18em;color:var(--nss-muted)}
+:is(body>section:first-of-type,body>main>section:first-child)>h2::first-letter{color:var(--nss-ink);font-size:1.25em}
+
+/* article headings get a markdown-style marker */
+article h2::before{content:"## ";font:600 .8em var(--nss-mono);color:var(--nss-ink)}
+article h3::before{content:"### ";font:600 .8em var(--nss-mono);color:var(--nss-accent-2)}
+article{padding-block:1rem 0}
+/* "last updated" line closing an article */
+article>p:last-child:has(time){margin-top:3rem;padding-top:1rem;border-top:1px dashed var(--nss-line);font:500 .8rem/1.5 var(--nss-mono);color:var(--nss-muted)}
+/* an aside inside an article is a callout box */
+article aside{margin:0 0 1.2em;padding:.9rem 1.1rem;border:1px solid color-mix(in srgb,var(--nss-accent) 45%,var(--nss-line));border-radius:var(--nss-radius);background:color-mix(in srgb,var(--nss-accent) 9%,var(--nss-surface))}
+article aside>:last-child{margin-bottom:0}
+article aside>:first-child:is(strong,h4){display:block;margin:0 0 .35rem;color:var(--nss-ink)}
+
+/* cards: lists in the home section, and a section of articles */
+:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type){display:grid;gap:.75rem;padding:0;list-style:none}
+:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type)>li{padding:1rem 1.1rem;color:var(--nss-muted);font-size:.93rem;line-height:1.5}
+:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type)>li>a:first-child{font:700 1.02rem var(--nss-mono);color:var(--nss-fg);text-decoration:none}
+:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type)>li>a:first-child::before{content:"→ ";color:var(--nss-ink)}
+@media (min-width:40rem){:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type){grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:56rem){
+  :is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type){grid-template-columns:repeat(auto-fill,minmax(14rem,1fr))}
+  body>section:first-of-type>p:first-of-type,body>main>section:first-child>p:first-child{margin-top:5rem}
+}
+section:has(>article+article){display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;align-items:stretch}
+section:has(>article+article)>:not(article){grid-column:1/-1;margin-bottom:0}
+section:has(>article+article)>article{display:flex;flex-direction:column;padding:1.1rem 1.2rem;margin:0}
+section:has(>article+article)>article>:is(h2,h3){margin-top:0;font-size:1.05rem}
+section:has(>article+article)>article>:is(h2,h3)::before{content:none}
+section:has(>article+article)>article>:last-child{margin-bottom:0}
+section:has(>article+article)>article>footer{margin-top:auto;padding-top:.6rem;border-top:1px dashed var(--nss-line);font:.8rem var(--nss-mono);color:var(--nss-muted)}
+
+/* tiles: a list where every item is just a link (link pages, service lists) */
+:is(article,body>section:not(:first-of-type),main>section:not(:first-child)) ul:has(>li>a:first-child):not(:has(>li>:first-child:not(a))){display:grid;grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr));gap:.5rem;padding:0;list-style:none}
+:is(article,body>section:not(:first-of-type),main>section:not(:first-child)) ul:has(>li>a:first-child):not(:has(>li>:first-child:not(a)))>li{margin:0;padding:.7rem .85rem;font-size:.92rem;line-height:1.4;color:var(--nss-muted)}
+:is(article,body>section:not(:first-of-type),main>section:not(:first-child)) ul:has(>li>a:first-child):not(:has(>li>:first-child:not(a)))>li>a{color:var(--nss-fg);font-weight:600;text-decoration:none}
+
+/* the shared card surface: cards, tiles, article cards */
+:is(:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type)>li,:is(article,body>section:not(:first-of-type),main>section:not(:first-child)) ul:has(>li>a:first-child):not(:has(>li>:first-child:not(a)))>li,section:has(>article+article)>article){
+  position:relative;margin:0;background:var(--nss-surface);border:1px solid var(--nss-line);border-radius:var(--nss-radius);transition:border-color .2s,transform .2s,background .2s
+}
+:is(:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type)>li,:is(article,body>section:not(:first-of-type),main>section:not(:first-child)) ul:has(>li>a:first-child):not(:has(>li>:first-child:not(a)))>li):hover,section:has(>article+article)>article:has(a):hover{border-color:var(--nss-accent);background:var(--nss-surface-2);transform:translateY(-2px)}
+/* the whole card is clickable through its first link */
+:is(:is(body>section:first-of-type,body>main>section:first-child)>ul:not(:last-of-type),:is(article,body>section:not(:first-of-type),main>section:not(:first-child)) ul:has(>li>a:first-child):not(:has(>li>:first-child:not(a))))>li>a:first-child::after{content:"";position:absolute;inset:0;border-radius:var(--nss-radius)}
+
+/* timeline: a list whose items start with a <time> */
+ul:has(>li:first-child>time:first-child){list-style:none;padding:0 0 0 1rem;border-left:1px solid var(--nss-line)}
+ul:has(>li:first-child>time:first-child)>li{position:relative;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .45rem;margin:0;padding:.6rem 0 .6rem .9rem;font:.78rem/1.6 var(--nss-mono);color:var(--nss-muted)}
+ul:has(>li:first-child>time:first-child)>li::before{content:"";position:absolute;left:-1.33rem;top:.95rem;width:9px;height:9px;border-radius:50%;background:var(--nss-bg);border:2px solid var(--nss-muted);transition:.2s}
+ul:has(>li:first-child>time:first-child)>li:hover::before{background:var(--nss-accent);border-color:var(--nss-accent)}
+ul:has(>li:first-child>time:first-child)>li>a{flex:1 1 100%;font:500 1rem/1.45 var(--nss-sans);color:var(--nss-fg);text-decoration:none}
+ul:has(>li:first-child>time:first-child)>li>a:hover{color:var(--nss-ink)}
+/* on the home section the newest entry is highlighted */
+:is(body>section:first-of-type,body>main>section:first-child)>ul:has(>li:first-child>time:first-child)>li:first-child::before{background:var(--nss-ink);border-color:var(--nss-ink);box-shadow:0 0 0 4px var(--nss-glow)}
+:is(body>section:first-of-type,body>main>section:first-child)>ul:has(>li:first-child>time:first-child)>li:first-child>a::after{content:"new";display:inline-block;margin-left:.5rem;padding:.12rem .45rem;border-radius:999px;vertical-align:.12em;font:700 .62rem/1.2 var(--nss-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--nss-bg);background:var(--nss-ink)}
+@media (min-width:40rem){
+  ul:has(>li:first-child>time:first-child)>li{flex-wrap:nowrap;gap:.6rem}
+  ul:has(>li:first-child>time:first-child)>li>a{flex:1 1 auto;min-width:0;margin-left:.4rem}
+  ul:has(>li:first-child>time:first-child)>li>time{flex:none}
+}
+
+/* key–value rows: list items that start with <strong> (specs, stats, "uses" pages) */
+ul:has(>li>strong:first-child){list-style:none;padding:0}
+ul:has(>li>strong:first-child)>li{margin:0;padding:.5rem 0;border-bottom:1px dashed var(--nss-line)}
+ul:has(>li>strong:first-child)>li:last-child{border-bottom:0}
+li>strong:first-child{font:600 .92em var(--nss-mono);color:var(--nss-ink)}
+li>small{margin-left:.35rem}
+li>progress,li>meter{width:6rem;margin:0 .4rem}
+@media (min-width:40rem){
+  ul:has(>li>strong:first-child)>li{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:.45rem}
+  ul:has(>li>strong:first-child)>li>strong:first-child{flex:0 0 11rem}
+  li:has(>small:last-child){display:flex;justify-content:space-between;gap:1rem}
+  dl{grid-template-columns:max-content 1fr}
+  dd{margin:0 0 .4rem}
+}
+
+/* badge strip: a later section holding a single paragraph of links ("Member of …") */
+body>section:not(:first-of-type):has(>p:only-child){margin-top:3.5rem;padding-top:1.5rem;font:500 .82rem/2.4 var(--nss-mono);color:var(--nss-muted);background:linear-gradient(var(--nss-line),var(--nss-line)) center top/calc(100% - 2*var(--nss-gutter)) 1px no-repeat}
+body>section:not(:first-of-type):has(>p:only-child)>p{margin:0}
+body>section:not(:first-of-type):has(>p:only-child)>p::first-letter{color:var(--nss-ink)}
+body>section:not(:first-of-type):has(>p:only-child) a{padding:.05rem .65rem;line-height:1.9;border:1px dashed var(--nss-line);border-radius:999px;text-decoration:none;color:var(--nss-fg);transition:.2s}
+body>section:not(:first-of-type):has(>p:only-child) a:hover{border:1px solid var(--nss-accent);color:var(--nss-ink)}
+
+/* stat tiles: a <dl> whose terms are grouped in <div>s → a row of tiles
+   <dl><div><dt>Uptime</dt><dd><data value="99.9">99.9%</data></dd></div>…</dl> */
+dl:has(>div){grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.75rem}
+dl>div{padding:.85rem 1rem;background:var(--nss-surface);border:1px solid var(--nss-line);border-radius:var(--nss-radius)}
+dl>div>dt{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--nss-muted)}
+dl>div>dd{margin:.15rem 0 0;color:var(--nss-fg)}
+dl>div>dd:has(>:is(data,output):only-child){font:700 1.6rem/1.2 var(--nss-sans)}
+dl>div>dd>small{display:block;margin-top:.2rem}

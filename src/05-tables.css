@@ -1,0 +1,12 @@
+/* ── tables ────────────────────────────────────────────── */
+table{display:block;width:max-content;max-width:100%;overflow-x:auto;border-collapse:collapse;font-size:.9rem;border:1px solid var(--nss-line);border-radius:var(--nss-radius)}
+caption{padding:.6rem .85rem;text-align:left;font:600 .8rem var(--nss-mono);color:var(--nss-muted)}
+th,td{padding:.6rem .85rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--nss-line)}
+thead th,tr:first-child>th:only-of-type{font:600 .72rem var(--nss-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--nss-muted);background:var(--nss-surface)}
+tbody th{font-weight:600}
+tbody tr:hover{background:color-mix(in srgb,var(--nss-surface-2) 60%,transparent)}
+tbody tr:last-child>*{border-bottom:0}
+tfoot{font-weight:600;background:var(--nss-surface)}
+tfoot tr>*{border-top:2px solid var(--nss-line);border-bottom:0}
+td:has(>:is(data,time):only-child){font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (min-width:40rem){table{display:table;width:100%}}

@@ -1,0 +1,14 @@
+/* ── media ─────────────────────────────────────────────── */
+img,picture,video,canvas,svg{display:block;max-width:100%;height:auto}
+img,video{margin-inline:auto;border-radius:var(--nss-radius)}
+p>img{margin-block:.5rem;border:1px solid var(--nss-line)}
+p>img:only-child{margin-inline:auto}
+audio{width:100%}
+iframe{width:100%;border:1px solid var(--nss-line);border-radius:var(--nss-radius);aspect-ratio:16/9;height:auto}
+figure{margin-inline:0}
+figure>:is(img,video,picture){margin-bottom:.5rem}
+figcaption{font:.8rem var(--nss-mono);color:var(--nss-muted);text-align:center}
+/* a figure holding figures is a gallery:  <figure><figure>…</figure><figure>…</figure><figcaption>…</figcaption></figure> */
+figure:has(>figure){display:grid;grid-template-columns:repeat(auto-fill,minmax(min(9rem,40%),1fr));gap:.75rem;align-items:start}
+figure:has(>figure)>figure{margin:0}
+figure:has(>figure)>figcaption{grid-column:1/-1}

@@ -1,32 +1,27 @@
-stages:
-  - build
+# nss: check the build on every push, publish the demo and the CSS to GitLab Pages from main.
+# Pages URL: https://niharokz.gitlab.io/nss/  (stylesheet at /nss.min.css)
 
-minify_css:
-  stage: build
-  image: node:20
-  rules:
-    - changes:
-        - nss.css
+image: python:3.13-alpine
+
+stages: [test, deploy]
+
+check:
+  stage: test
   script:
-    # 1. Install minifier
-    - npm install -g clean-css-cli
+    - python build.py --check
+    - python -m unittest discover -s tests -v
+    # dist/ is committed; fail if someone edited src/ without rebuilding
+    - apk add --no-cache git >/dev/null
+    - git diff --exit-code -- dist nss.css nss.min.css || (echo "Run 'python build.py' and commit dist/." && exit 1)
 
-    # 2. Minify CSS
-    - cleancss -o nss.min.css nss.css
-
-    # 3. Configure Git
-    - git config user.name "GitLab CI"
-    - git config user.email "ci-bot@example.com"
-
-    # 4. Prepare commit
-    - git add nss.min.css
-    - |
-      if ! git diff --cached --quiet; then
-        git commit -m "Auto-minified nss.css → nss.min.css [skip ci]"
-        # 5. Configure non-interactive HTTPS credentials using the token
-        git remote set-url origin https://gitlab-ci-token:${GIT_PUSH_TOKEN}@gitlab.com/${CI_PROJECT_PATH}.git
-        # 6. Push commit
-        git push origin HEAD:$CI_COMMIT_REF_NAME
-      else
-        echo "No changes to commit"
-      fi
+pages:
+  stage: deploy
+  script:
+    - python build.py
+    - mkdir -p public
+    - cp dist/*.css public/
+    - sed 's#\.\./dist/#./#' demo/index.html > public/index.html
+  artifacts:
+    paths: [public]
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

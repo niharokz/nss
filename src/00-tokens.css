@@ -1,0 +1,32 @@
+/* ── tokens ──────────────────────────────────────────────
+   Every colour, font and size lives here. Override any of them
+   in your own stylesheet:  :root{ --nss-accent:#c2410c }      */
+:root{
+  /* surfaces */
+  --nss-bg:#070b0f; --nss-surface:#0f161b; --nss-surface-2:#152027; --nss-line:#1f2c33;
+  /* text */
+  --nss-fg:#e6ecec; --nss-muted:#8b979a;
+  /* accent: --nss-accent fills and borders, --nss-ink is the readable text tint of it */
+  --nss-accent:#3a807a; --nss-ink:#66bdb3; --nss-accent-2:#a9b8ff; --nss-on-accent:#fff;
+  /* states */
+  --nss-ok:#3fb27f; --nss-warn:#e0a63a; --nss-bad:#ff6b6b;
+  /* background: grid lines and a corner glow (set them to transparent to turn them off) */
+  --nss-grid:rgba(58,128,122,.09); --nss-grid-size:32px; --nss-glow:rgba(58,128,122,.22);
+  /* type */
+  --nss-sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+  --nss-mono:ui-monospace,"JetBrains Mono","Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+  --nss-size:16px; --nss-leading:1.7;
+  /* shape and layout */
+  --nss-radius:12px; --nss-gutter:1rem; --nss-width:46rem; --nss-wide:72rem;
+  /* the logo in the header bar: "~/site_" */
+  --nss-logo-prefix:"~/"; --nss-logo-suffix:"_";
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){:root{
+  --nss-bg:#f6f8f8; --nss-surface:#fff; --nss-surface-2:#eaf1f0; --nss-line:#d7e2e0;
+  --nss-fg:#14201f; --nss-muted:#5c6b6a; --nss-ink:#2c6a64; --nss-accent-2:#4b5bb5;
+  --nss-ok:#1f8a5a; --nss-warn:#a86a00; --nss-bad:#d63c3c;
+  --nss-grid:rgba(58,128,122,.10); --nss-glow:rgba(58,128,122,.12);
+  color-scheme:light;
+}}
+@media (min-width:40rem){:root{--nss-gutter:1.5rem; --nss-size:17px; --nss-grid-size:48px}}

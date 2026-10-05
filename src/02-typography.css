@@ -1,0 +1,35 @@
+/* ── typography ────────────────────────────────────────── */
+a{color:inherit;text-decoration:underline 2px var(--nss-accent);text-underline-offset:.22em;transition:color .2s}
+a:hover{color:var(--nss-ink)}
+h1,h2,h3,h4,h5,h6{line-height:1.25;letter-spacing:-.02em;margin:2.2em 0 .6em;text-wrap:balance}
+h1{font-size:2em}
+h2{font-size:1.35rem}h3{font-size:1.12rem}h4{font-size:1rem}h5,h6{font-size:.9rem}
+h4,h5,h6{color:var(--nss-muted)}
+h6{text-transform:uppercase;letter-spacing:.08em}
+:is(h1,h2,h3,h4)>small{margin-left:.4rem;padding:.1rem .5rem;border-radius:999px;background:var(--nss-surface-2);vertical-align:.25em;font-size:.62rem;letter-spacing:.04em}
+p,ul,ol,dl,pre,table,blockquote,figure,details,fieldset,address{margin:0 0 1.2em}
+ul,ol{padding-left:1.25rem}
+li{margin:.3em 0}
+li::marker{color:var(--nss-accent)}
+ol>li::marker{font:600 .85em var(--nss-mono)}
+:is(ul,ol) :is(ul,ol){margin:.3em 0 0}
+dl{display:grid;gap:.15rem 1rem}
+dt{font:600 .9em var(--nss-mono);color:var(--nss-ink)}
+dd{margin:0 0 .6rem;color:var(--nss-muted)}
+hr{border:0;height:1px;margin:2.5rem 0;background:linear-gradient(90deg,transparent,var(--nss-line) 15%,var(--nss-accent) 50%,var(--nss-line) 85%,transparent)}
+small{font:.78rem var(--nss-mono);color:var(--nss-muted)}
+time,data{font-family:var(--nss-mono);font-variant-numeric:tabular-nums}
+mark{padding:0 .25em;border-radius:4px;background:var(--nss-accent);color:var(--nss-on-accent)}
+abbr[title]{text-decoration:underline dotted var(--nss-muted);text-underline-offset:.2em;cursor:help}
+del{color:var(--nss-muted);text-decoration-color:var(--nss-bad)}
+ins{text-decoration:none;background:color-mix(in srgb,var(--nss-ok) 22%,transparent);border-radius:3px;padding:0 .15em}
+sub,sup{font-size:.72em;line-height:0}
+q{font-style:italic}
+cite,dfn{font-style:italic;color:var(--nss-muted)}
+address{font-style:normal;color:var(--nss-muted)}
+blockquote{margin-inline:0;padding:.8rem 1rem;border-left:3px solid var(--nss-accent);background:var(--nss-surface);border-radius:0 var(--nss-radius) var(--nss-radius) 0;color:var(--nss-muted)}
+blockquote>:last-child{margin-bottom:0}
+blockquote>footer,blockquote cite{display:block;margin-top:.5rem;font:.82rem var(--nss-mono);font-style:normal}
+hgroup>*{margin:0}
+hgroup>p{margin-top:.4rem;color:var(--nss-muted);font-size:1.05rem}
+center>:first-child{margin-top:2rem}

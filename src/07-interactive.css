@@ -1,0 +1,19 @@
+/* ── details, dialog, menu ─────────────────────────────── */
+details{border:1px solid var(--nss-line);border-radius:var(--nss-radius);background:var(--nss-surface);padding:0 1rem}
+summary{cursor:pointer;padding:.8rem 0;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";display:inline-block;margin-right:.55rem;color:var(--nss-ink);transition:transform .2s}
+details[open]>summary::before{transform:rotate(90deg)}
+details[open]{padding-bottom:.6rem}
+details[open]>summary{border-bottom:1px dashed var(--nss-line);margin-bottom:.8rem}
+/* consecutive details join into one accordion */
+details+details{margin-top:-1.2em;border-top:0;border-radius:0}
+details:has(+details){border-bottom-left-radius:0;border-bottom-right-radius:0}
+details+details:not(:has(+details)){border-radius:0 0 var(--nss-radius) var(--nss-radius)}
+dialog{max-width:min(36rem,calc(100vw - 2rem));padding:1.5rem;border:1px solid var(--nss-line);border-radius:var(--nss-radius);background:var(--nss-surface);color:var(--nss-fg);box-shadow:0 24px 60px -20px rgba(0,0,0,.6)}
+dialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(3px)}
+dialog>:first-child{margin-top:0}
+dialog>:last-child{margin-bottom:0}
+dialog form[method=dialog]{display:flex;justify-content:flex-end;gap:.5rem;margin:1rem 0 0}
+menu{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none}
+menu>li{margin:0}

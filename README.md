@@ -1,329 +1,269 @@
-# NSS CSS Framework v2.0
+# nss
 
-## 🎨 Modern, Vibrant, Compact Design
+**Classless CSS. Write plain HTML and get a finished website.** No classes, no JavaScript, no build step.
 
-A plug-and-play CSS framework for semantic HTML with no classes or JavaScript required. Built for personal websites, portfolios, and technical blogs.
+nss styles every HTML element, and it recognises common page structures from the HTML alone: a hero, cards, a timeline, tiles, a gallery, stat tiles, a sidebar and more. You write semantic HTML. nss does the rest.
 
----
+- **About 7 KB gzipped**, one file, zero JavaScript.
+- **Light and dark** follow the visitor's system setting.
+- **Mobile first.** Every pattern works from 320px phones up to wide screens.
+- **Themeable** through about 25 CSS variables, with three ready-made themes.
+- **Accessible.** Visible focus rings, reduced motion, high-contrast mode and print styles.
 
-## 📦 Files
-
-### 1. **nss.css** (24.2 KB)
-- Full version with comments
-- Easy to read and customize
-- Perfect for development
-
-### 2. **nss.min.css** (15.9 KB) ⚡
-- Minified version (34.1% smaller!)
-- Production-ready
-- Optimized for performance
+It powers [nih.ar](https://nih.ar) and [home.nihars.com](https://home.nihars.com). See every element on the [demo page](https://niharokz.gitlab.io/nss/).
 
 ---
 
-## ✨ Key Features
+## Contents
 
-### 🎨 **Vibrant Design System**
-- 6 vibrant accent colors (blue, purple, pink, orange, green, cyan)
-- Gradient effects on headers and buttons
-- Color-coded project and note items
-- Smooth animations and transitions
-
-### 🌓 **AMOLED Dark Mode**
-- Pure black (#000000) background in dark mode
-- Automatic theme switching based on system preference
-- Perfect contrast ratios
-- Manual theme override support via `data-theme` attribute
-
-### 📱 **Fully Responsive**
-- Mobile-first approach
-- Smooth breakpoints: 768px, 640px, 480px
-- Perfect on all devices
-- Touch-friendly interface
-
-### 🎯 **Compact Layout**
-- Single-line header on desktop
-- Inline project tags with unique colors
-- Inline note items with time + description
-- Space-efficient design
-
-### 🚀 **Zero Configuration**
-- Works with pure semantic HTML
-- No classes required
-- No JavaScript needed
-- Just link and go!
-
-### ♿ **Accessibility First**
-- WCAG compliant
-- Keyboard navigation support
-- Screen reader friendly
-- Reduced motion support
-- High contrast mode support
+- [Install](#install)
+- [A first page](#a-first-page)
+- [Elements](#elements)
+- [Patterns](#patterns)
+- [Forms](#forms)
+- [Themes and variables](#themes-and-variables)
+- [Building from source](#building-from-source)
+- [Upgrading from 2.x](#upgrading-from-2x)
+- [FAQ](#faq)
 
 ---
 
-## 💻 Installation & Usage
+## Install
 
-### Quick Start
+Add one line to your page's `<head>`:
+
+```html
+<link rel="stylesheet" href="https://niharokz.gitlab.io/nss/nss.min.css">
+```
+
+Or download [`dist/nss.min.css`](dist/nss.min.css), put it next to your pages, and link it with `href="nss.min.css"`. Self-hosting is faster and keeps your site free of third-party requests.
+
+| File | Use it for |
+| --- | --- |
+| `dist/nss.min.css` | Production. Everything, minified |
+| `dist/nss.css` | Reading or editing. Same rules, with comments |
+| `dist/nss-amber.min.css`, `nss-violet.min.css`, `nss-paper.min.css` | Optional themes, loaded **after** nss |
+
+---
+
+## A first page
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
-    
-    <!-- For Production -->
-    <link rel="stylesheet" href="nss.min.css">
-    
-    <!-- OR For Development -->
-    <link rel="stylesheet" href="nss.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My site</title>
+  <link rel="stylesheet" href="nss.min.css">
 </head>
 <body>
-    <!-- Your semantic HTML here -->
+  <header>
+    <h1><a href="/">mysite</a></h1>
+    <nav><a href="/about.html">about</a> <a href="/notes.html">notes</a></nav>
+  </header>
+
+  <section>
+    <p>Hi, I'm Ada. I build small, fast things.</p>
+    <p>This line becomes the hero's subtitle.</p>
+  </section>
+
+  <article>
+    <h2>Hello world</h2>
+    <p>A normal article: readable width, good spacing, nothing to configure.</p>
+  </article>
+
+  <footer><nav><a href="/feed.xml">feed</a></nav></footer>
 </body>
 </html>
 ```
 
-### Manual Theme Override (Optional)
-```html
-<!-- Force light mode -->
-<html data-theme="light">
-
-<!-- Force dark mode -->
-<html data-theme="dark">
-```
+That gives you a sticky header bar with the logo `~/mysite_`, a large hero, a styled article and a footer. It is responsive and works in light and dark mode.
 
 ---
 
-## 🎨 Color System
+## Elements
 
-### Light Mode
-- **Background:** #fafbfc (soft white)
-- **Text:** #0f172a (dark slate)
-- **Accents:** Blue, Purple, Pink, Orange, Green, Cyan
+Every element is styled. A few have extra touches:
 
-### Dark Mode (AMOLED)
-- **Background:** #000000 (pure black)
-- **Surface:** #0a0a0a (near black)
-- **Text:** #f1f5f9 (bright white)
-- **Accents:** Vibrant versions of light mode colors
+| HTML | What you get |
+| --- | --- |
+| `h2` … `h6` in an `article` | Headings marked `##` and `###` in the accent colour |
+| `<h3>Title <small>new</small></h3>` | A small badge next to the heading |
+| `<pre><code>` | A terminal-style window with three dots |
+| `<pre><samp>` | Command output: smaller, no window dots |
+| `kbd`, `var`, `samp`, inline `code` | Key caps, italic mono variables, output chips |
+| `blockquote` with a `footer` | A quote with its attribution |
+| `ol` | Monospace numbers |
+| `dl` | A two-column term list on wide screens |
+| `table` with `caption`, `thead`, `tfoot` | Scrolls sideways on phones; rows highlight on hover |
+| `details` / `summary` | A disclosure box; several in a row join into an accordion |
+| `dialog` | A centred modal with a dimmed backdrop |
+| `mark`, `abbr`, `del`, `ins`, `q`, `time`, `data`, `address`, `hr` | All styled to match |
 
 ---
 
-## 🏗️ HTML Structure Support
+## Patterns
 
-### Header
-```html
-<header>
-    <h1><a href="/">Site Name</a></h1>
-    <nav>
-        <a href="/">home</a>
-        <a href="/about">about</a>
-        <a href="/blog">blog</a>
-    </nav>
-</header>
-```
+Patterns are components that nss recognises from structure. There is nothing to add: write the HTML on the left and you get the component on the right.
 
-### Projects Section (Inline Tags)
-```html
-<section>
-    <h2>Projects</h2>
-    <ul>
-        <li><a href="#">Project 1</a></li>
-        <li><a href="#">Project 2</a></li>
-        <li><a href="#">Project 3</a></li>
-    </ul>
-</section>
-```
-*Projects display as colorful inline tags, each with unique color*
+| Write this | Get this |
+| --- | --- |
+| `header` containing `h1>a` and `nav` | A sticky, blurred header bar. The link text becomes the logo `~/name_` |
+| `header` with `nav` first, then an `h1` | The bar, plus a large gradient page title below it |
+| `nav>ol` of links | Breadcrumbs, with `/` separators and `aria-current="page"` support |
+| The first `<p>` of the first `section` | The hero headline. A link inside it gets the gradient. The next `<p>` is the subtitle |
+| A `ul` in the first `section`, before its last list | Cards in a responsive grid |
+| A `section` holding two or more `article`s | Article cards; each card's `footer` becomes its meta line |
+| A `ul` where every item starts with a link | Tiles: a grid of link buttons |
+| A `ul` where every item starts with `<time>` | A timeline. In the first section, the newest entry is highlighted |
+| `li` starting with `<strong>` | Key–value rows: the label on the left, the value on the right |
+| `dl` made of `div`s (`<div><dt>…</dt><dd>…</dd></div>`) | Stat tiles |
+| A `figure` holding `figure`s | An image gallery, with one caption for the whole set |
+| An `aside` inside an `article` | A callout box. A leading `<strong>` or `<h4>` becomes its title |
+| `main` and `aside` side by side in `body` | A sidebar layout from 64rem wide |
+| A later `section` with a single `<p>` | A strip of badges; each link becomes a chip |
+| An article whose last `<p>` contains a `<time>` | A quiet "last updated" line |
 
-### Notes Section (with Time)
+Here is the cards and timeline markup from the demo:
+
 ```html
 <section>
-    <h2>Notes</h2>
-    <ul>
-        <li><time>2024-01-15</time> -- <a href="#">Note Title</a></li>
-        <li><time>2024-01-10</time> -- <a href="#">Another Note</a></li>
-    </ul>
+  <p>Plain HTML in. A finished website out.</p>
+  <h2># features</h2>
+  <ul>
+    <li><a href="/a">Fast</a>: about 7 KB gzipped.</li>
+    <li><a href="/b">Simple</a>: nothing to learn but HTML.</li>
+  </ul>
+  <h2># changelog</h2>
+  <ul>
+    <li><time datetime="2026-10-05">2026-10-05</time> -- <a href="/v3">nss 3.0</a></li>
+    <li><time datetime="2025-04-01">2025-04-01</time> -- <a href="/v2">nss 2.0</a></li>
+  </ul>
 </section>
 ```
-*Notes display inline with time tags, maintaining single-line layout*
 
-### Articles
+---
+
+## Forms
+
+Forms need no extra markup either.
+
+- A `form` that contains `label`s, `fieldset`s or `p`s stacks into a column. A form made only of inputs and a button sits on one line, which suits a search box.
+- `type="submit"` and plain `button` are the primary button. `type="reset"` and `type="button"` are the secondary, outlined button. `disabled` dims either one.
+- `<input type="checkbox" role="switch">` is drawn as a toggle switch.
+- Checkboxes, radios, ranges, selects, file inputs, `progress` (including the indeterminate state with no `value`), `meter` and `output` are all styled.
+- Invalid fields turn red once the visitor has touched them (`:user-invalid`), or when you set `aria-invalid="true"`.
+
 ```html
-<article>
-    <h1>Article Title</h1>
-    <p>Lead paragraph...</p>
-    
-    <h2>Section</h2>
-    <p>Content...</p>
-    
-    <ul>
-        <li>List item with arrow</li>
-        <li>Another item</li>
-    </ul>
-</article>
+<form>
+  <label>Email <input type="email" required></label>
+  <label><input type="checkbox" role="switch"> Send me updates</label>
+  <p><button>Subscribe</button> <button type="reset">Clear</button></p>
+</form>
 ```
 
-### Footer
+---
+
+## Themes and variables
+
+Load a theme after nss:
+
 ```html
-<footer>
-    <p>
-        <nav>
-            <a href="/">home</a>
-            <a href="/rss.xml">rss</a>
-            <a href="/privacy">privacy</a>
-        </nav>
-        <span>Contact: <a href="mailto:you@email.com">you@email.com</a></span>
-    </p>
-</footer>
+<link rel="stylesheet" href="nss.min.css">
+<link rel="stylesheet" href="nss-paper.min.css">
 ```
 
----
+| Theme | Look |
+| --- | --- |
+| *(none)* | Teal `#3a807a` on a dark grid. Light mode follows the system |
+| `amber` | Warm orange accent |
+| `violet` | Violet accent |
+| `paper` | Always light, serif text, no grid, no logo decoration |
 
-## 🎨 Customization
+Or set your own variables. Put them after nss, in a `<style>` block or your own file:
 
-All design tokens are defined as CSS variables in `:root`:
-
-```css
-:root {
-    /* Colors */
-    --accent-blue: #3b82f6;
-    --accent-purple: #8b5cf6;
-    --accent-pink: #ec4899;
-    
-    /* Spacing */
-    --space-sm: 0.5rem;
-    --space-md: 0.75rem;
-    --space-lg: 1rem;
-    
-    /* Typography */
-    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-mono: ui-monospace, 'SF Mono', monospace;
-}
+```html
+<style>
+  :root { --nss-accent: #c2410c; --nss-ink: #ea580c; --nss-radius: 4px; }
+</style>
 ```
 
-Simply override these variables to customize the design!
+| Variable | Default | Controls |
+| --- | --- | --- |
+| `--nss-bg`, `--nss-surface`, `--nss-surface-2`, `--nss-line` | dark greys | Page, card and border colours |
+| `--nss-fg`, `--nss-muted` | near-white, grey | Text |
+| `--nss-accent` | `#3a807a` | Buttons, borders and highlights |
+| `--nss-ink` | `#66bdb3` | Accent-coloured text (keep it readable on `--nss-bg`) |
+| `--nss-accent-2` | `#a9b8ff` | Second accent: gradients, the third terminal dot |
+| `--nss-on-accent` | `#fff` | Text on accent-filled buttons |
+| `--nss-ok`, `--nss-warn`, `--nss-bad` | green, amber, red | Meters and validation |
+| `--nss-grid`, `--nss-grid-size`, `--nss-glow` | faint teal | The background grid and corner glow. Set to `transparent` to turn them off |
+| `--nss-sans`, `--nss-mono` | system fonts | Font stacks |
+| `--nss-size`, `--nss-leading` | `16px` (`17px` on wide screens), `1.7` | Base text size and line height |
+| `--nss-radius` | `12px` | Corner rounding |
+| `--nss-width`, `--nss-wide` | `46rem`, `72rem` | Text column and sidebar-layout widths |
+| `--nss-gutter` | `1rem` (`1.5rem` on wide screens) | Side padding |
+| `--nss-logo-prefix`, `--nss-logo-suffix` | `"~/"`, `"_"` | Text around the header logo. Use `""` to remove |
+
+To change only the light mode, wrap your overrides in `@media (prefers-color-scheme: light) { :root { … } }`.
 
 ---
 
-## 📐 Supported Elements
+## Building from source
 
-### Typography
-- `h1` - `h6` headings
-- `p` paragraphs
-- `strong`, `em`, `small`
-- `mark` for highlights
-- `time` for dates
-- `code`, `pre`, `kbd`
+You only need Python 3.10 or newer. There are no dependencies.
 
-### Lists
-- `ul` unordered lists (with arrows)
-- `ol` ordered lists (with numbers)
-- `dl`, `dt`, `dd` description lists
+```bash
+python build.py           # join src/*.css → dist/, minify, build themes
+python build.py --check   # also fail on class selectors, data-* hooks, bad braces, or > 8 KB gzipped
+python -m unittest discover -s tests
+```
 
-### Forms
-- `input` (text, email, password, etc.)
-- `textarea`
-- `select`
-- `button`
-- `fieldset`, `legend`
+```text
+src/
+  00-tokens.css       variables, light and dark
+  01-base.css         reset, page background, focus
+  02-typography.css   text, headings, lists, quotes
+  03-code.css         code, kbd, pre
+  04-media.css        images, video, figures, gallery
+  05-tables.css
+  06-forms.css        inputs, buttons, switch, progress
+  07-interactive.css  details, accordion, dialog
+  08-layout.css       header bar, nav, breadcrumbs, sidebar, footer
+  09-patterns.css     hero, cards, tiles, timeline, stats, callouts
+  10-a11y-print.css   reduced motion, forced colours, print
+themes/               one file of variables per theme
+sites/                site-specific extras, e.g. nihar.css for nih.ar
+demo/index.html       every element and pattern on one page
+```
 
-### Tables
-- Full table support with hover effects
+Edit `src/`, run `python build.py`, and commit `dist/` along with your change. CI fails if `dist/` is out of date. Pushing to `main` publishes the demo and the CSS to GitLab Pages.
 
-### Media
-- `img`, `video`, `audio`
-- `figure`, `figcaption`
-
-### Interactive
-- `details`, `summary`
-- `progress`
-
----
-
-## 🚀 Performance
-
-- **No JavaScript:** Pure CSS solution
-- **Lightweight:** Only 15.9 KB minified
-- **Fast Rendering:** GPU-accelerated animations
-- **CDN Ready:** Host anywhere
+**The rules:** no class selectors, no `data-*` selectors, and no JavaScript. Standard attributes such as `type`, `role`, `open`, `disabled` and `aria-*` are fine, because they carry meaning on their own.
 
 ---
 
-## 🌟 Perfect For
+## Upgrading from 2.x
 
-- Personal websites
-- Developer portfolios
-- Technical blogs
-- Documentation sites
-- Project showcases
-- Minimalist landing pages
-
----
-
-## 📊 Browser Support
-
-- ✅ Chrome/Edge (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Mobile browsers
-- ⚠️ IE11 not supported (uses modern CSS)
+- The root `nss.css` and `nss.min.css` still exist and are rebuilt from `src/`, so old links keep working. New links should point at `dist/`.
+- The design is new: a teal accent, a grid background and a sticky header bar.
+- The `data-theme` attribute is gone. Light and dark follow the system; use a theme file or the variables to force one look.
+- The old per-project colour cycling is gone. Use `--nss-accent` instead.
+- If your site relied on nih.ar's `$ whoami` label or the `~/nih.ar` logo, those now live in `sites/nihar.css`.
 
 ---
 
-## 🎯 Design Philosophy
+## FAQ
 
-1. **Semantic HTML First:** Let HTML structure define the design
-2. **No Classes Needed:** Pure element and pseudo-class selectors
-3. **Vibrant Yet Professional:** Eye-catching without being overwhelming
-4. **Compact & Efficient:** Maximum content, minimum chrome
-5. **Accessible by Default:** WCAG compliance built-in
+**Why no classes?** HTML already says what things are. A stylesheet that reads that structure keeps your markup clean, works with any Markdown generator, and lets you swap the look without touching a page.
 
----
+**Can I still use classes?** Yes, in your own CSS on top of nss. nss itself never uses them.
 
-## 📝 Changelog
+**Does it work with Markdown generators?** Yes. It was built for [rynz](https://pypi.org/project/rynz/), and works with anything that writes plain HTML.
 
-### v2.0 (Current)
-- ✨ Complete design overhaul with vibrant colors
-- 🎨 Added 6-color accent system
-- 🖤 AMOLED pure black dark mode
-- 📦 Compact inline layouts for projects and notes
-- 🎯 Single-line header design
-- 📱 Improved mobile responsiveness
-- ⚡ 34% smaller when minified
-
-### v1.1 (Previous)
-- Initial brutalist cyber design
-- Basic dark/light theme support
-- Semantic HTML styling
+**Which browsers?** Current Firefox, Chrome, Edge and Safari. The patterns use `:has()`, which every major browser has supported since 2023. Older browsers still get readable, styled pages; they just miss some layout touches.
 
 ---
 
-## 📄 License
-
-Free to use for personal and commercial projects.
-
----
-
-## 🤝 Contributing
-
-This is a personal framework, but feel free to fork and customize for your needs!
-
----
-
-## 📬 Support
-
-For questions or issues, refer to the code comments or create a discussion.
-
----
-
-## 🎉 Credits
-
-Built with ❤️ for the modern web.
-
-Inspired by brutalist design, terminal aesthetics, and modern UI trends.
-
----
-
-**NSS CSS Framework v2.0** - Making semantic HTML beautiful since 2024.
+[Changelog](CHANGELOG.md) · MIT License · made by [Nihar](https://nih.ar)
